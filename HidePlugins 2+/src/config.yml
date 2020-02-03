@@ -1,0 +1,78 @@
+# ----------------------------------------------------
+# HidePlugins 2+ by ComplexCode
+# If you find bugs, please contact with me:
+# https://www.spigotmc.org/members/complexcode.228450/
+# ----------------------------------------------------
+
+config:
+   #You can enable or disable checking for updates (true or false).
+   updates: true
+   
+   #You can enable or disable if you want to receive news from the developer (true or false).
+   news-broadcast: true
+   
+   #Here you can choose which language you want the plugin to work with.
+   lang: 'english'
+   
+   prefix: 
+      #You can enable or disable any option (true or false).
+      enable: true
+      #Message prefix, access not allowed. Supports color codes (&).
+      prefix: '&e&lHidePlugins>&r'
+   
+   protections:
+      commands-blocker:
+         #You can enable or disable any option (true or false).
+         enable: true
+         #Set your own permission.
+         permission: 'hideplugins2.bypass'
+
+      tab-blocker:
+         #You can enable or disable any option (true or false).
+         enable: true
+         #Set your own permission.
+         permission: 'hideplugins2.tabusage'
+   
+   sounds:
+      #You can enable or disable sounds (true or false).
+      enable: true
+      #You can add the amount of sounds you want, here is a list of sounds: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+      sounds-list:
+         - 'ENTITY_GHAST_DEATH'
+         - 'ENTITY_ENDERMAN_DEATH'
+         - 'ENTITY_BLAZE_DEATH'
+         - 'ENTITY_HORSE_DEATH'
+         - 'ENTITY_ENDER_DRAGON_DEATH'
+         - 'ENTITY_PHANTOM_DEATH'
+   
+   #Here are the commands that will follow in the tab list. You can add any command you want (without /).
+   tab-commands:
+      - 'tell'
+      - 'msg'
+   
+   #Here are the commands that will be protected. You can add any command you want (without /).
+   blocked-commands:
+      - 'about'
+      - 'bukkit:about'
+      - 'bukkit:help'
+      - 'bukkit:?'
+      - 'bukkit:? about'
+      - 'bukkit:pl'
+      - 'bukkit:plugins'
+      - 'bukkit:ver'
+      - 'bukkit:version'
+      - 'bukkit:help'
+      - 'help'
+      - 'icanhasbukkit'
+      - 'bukkit:? h'
+      - 'bukkit:? help'
+      - '?'
+      - 'pl'
+      - 'bukkit:? ?'
+      - 'plugins'
+      - 'ver'
+      - 'version'
+      - 'bukkit:? ver'
+      - 'minecraft:help'
+      - 'bukkit:? version'
+      - 'bukkit:? minecraft:help'

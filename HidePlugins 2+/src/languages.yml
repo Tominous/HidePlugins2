@@ -1,0 +1,64 @@
+# ----------------------------------------------------
+# HidePlugins 2+ by ComplexCode
+# If you find bugs, please contact with me:
+# https://www.spigotmc.org/members/complexcode.228450/
+# ----------------------------------------------------
+
+#Here are the messages corresponding to each language.
+languages:
+   english:
+      update-messages:
+         message-one: "&a&lThere is a new version available. &f%newversion%"
+         message-two: "&a&lYou can download it at: &f%link%"
+         error-message: "&c&lError verifying update."
+      no-permissions: "&l%player%, &c&lYou do not have permission to do that."
+      reload-config: "&a&lThe configuration has been reloaded!"
+      version: "&a&lThe version of the plugin is: &f%version%"
+      no-command-exist: "&c&lThe command you entered does not exist."
+      enable-messages:
+         message-one: "&aHas been enabled! Version: &f%version%"
+         message-two: "&fThanks for using my plugin! %author%"
+      disable-messages:
+         message-one: "&aHas been disable! Version: &f%version%"
+         message-two: "&fThanks for using my plugin! %author%"
+      sounds-error: "&c&lPlease check that sound is right!"
+      lang-error: "&cSelect a correct language."
+      help-messages:
+         usage: "&fPlease use: &b%help_command%"
+         title: "&fCommands List:"
+         hplus-command: "&b%hplus_command% &f- Show the list of available commands."
+         dev-command: "&b%dev_command% &f- Show the plug-in developer."
+         ver-command: "&b%ver_command% &f- Show the installed version of the plug-in."
+         reload-command: "&b%reload_command% &f- Reload the plug-in configurations."
+         disable-command: "&b%disable_command% &f- Disable the plug-in."
+      dev:
+         line1: "&fCreated by: &b%author%"
+         line2: "&fDiscord: &b%discord%"
+   spanish:
+      update-messages:
+         message-one: "&a&lHay una nueva version disponible. &f%newversion%"
+         message-two: "&a&lPuedes descargarla en: &f%link%"
+         error-message: "&c&lError al verificar la actualizacion."
+      no-permissions: "&l%player%, &c&lNo tienes permiso para hacer eso."
+      reload-config: "&a&lLa configuracion ha sido recargada!"
+      version: "&a&lLa version del complemento es: &f%version%"
+      no-command-exist: "&c&lEl comando que ingreso no existe."
+      enable-messages:
+         message-one: "&aHa sido habilitado! Version: &f%version%"
+         message-two: "&fGracias por usar mi complemento! %author%"
+      disable-messages:
+         message-one: "&aHa sido desabilitado! Version: &f%version%"
+         message-two: "&fGracias por usar mi complemento! %author%"
+      sounds-error: "&c&lComprueba que el sonido sea correcto!"
+      lang-error: "&cSelecciona un idioma correcto."
+      help-messages:
+         usage: "&fPor favor use: &b%help_command%"
+         title: "&fLista de comandos:"
+         hplus-command: "&b%hplus_command% &f- Muestra la lista de comandos disponibles."
+         dev-command: "&b%dev_command% &f- Muestra el desarrollador del complemento."
+         ver-command: "&b%ver_command% &f- Muestra la version instalada del complemento."
+         reload-command: "&b%reload_command% &f- Recarga la configuracion del complemento."
+         disable-command: "&b%disable_command% &f- Desactiva el complemento."
+      dev:
+         line1: "&fCreado por: &b%author%"
+         line2: "&fDiscord: &b%discord%"

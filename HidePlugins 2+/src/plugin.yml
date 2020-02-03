@@ -1,0 +1,9 @@
+name: HidePlugins2
+author: ComplexCode
+version: 2.7.0
+main: com.complexcode.hpl2plus.HidePlugins
+description: HidePlugins 2+ is perfect to hide all your plugins!
+commands:
+  hplus:
+    description: Main command of the plugin.
+    permission: hideplugins2.hplus
