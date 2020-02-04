@@ -1,6 +1,7 @@
 package com.complexcode.hpl2plus;
 
 import com.complexcode.hpl2plus.commands.Command_hplus;
+import com.complexcode.hpl2plus.commands.Command_hplus_completer;
 import com.complexcode.hpl2plus.events.CommandsBlocker;
 import com.complexcode.hpl2plus.events.JoinMessageUpdate;
 import com.complexcode.hpl2plus.events.TabBlocker;
@@ -33,19 +34,12 @@ public class HidePlugins extends JavaPlugin {
 	PluginDescriptionFile pdffile = getDescription();
 	
 	public ConsoleCommandSender b = Bukkit.getConsoleSender();
-	public FileConfiguration config = getConfig();
 	public String latestVersion;
 	public String rutaConfig;
-	public String name = "&e&lHidePlugins>&r";
-	public String prefix = config.getString("config.prefix.prefix");
 	public String version = pdffile.getVersion();
-	public String language = config.getString("config.lang");
   
 	public void onEnable() {
-		registerCommands();
-		registerPlayers();
 		registerConfig();
-		checkedUpdate();
 		
 		File langd = new File(getDataFolder(), "languages.yml");
 		if(!langd.exists()) {
@@ -59,44 +53,54 @@ public class HidePlugins extends JavaPlugin {
 			} 
 		}
 		
-		if(language.isEmpty() || !langlist.contains(language)) {
-			b.sendMessage(consoleColors(messages("lang-error")));
+		if(getConfig().getString("config.lang").isEmpty() || !langlist.contains(getConfig().getString("config.lang"))) {
+			b.sendMessage("");
+			b.sendMessage(consoleColors("&e>>> &cDisabled &aHidePlugins 2+&c!"));
+			b.sendMessage(consoleColors("&e>>> &fSelect a correct language."));
+			b.sendMessage("");
 			getPluginLoader().disablePlugin(this);
 		} else {
 			Metrics metrics = new Metrics(this, 5432);
 		    metrics.addCustomChart(new Metrics.SimplePie("used_language", new Callable<String>() {
 		        @Override
 		        public String call() throws Exception {
-		            return config.getString("config.lang");
+		            return getConfig().getString("config.lang");
 		        }
 		    }));
-
-			b.sendMessage(consoleColors(messages("enable-messages.message-one")).replace("%version%", version));
-			b.sendMessage(consoleColors(messages("enable-messages.message-two")).replace("%author%", "-ComplexCode"));
+		    
+		    checkedUpdate();
+		    
+		    b.sendMessage("");
+			b.sendMessage(consoleColors("&e>>> " + "&aEnabled &cHidePlugins 2+&a!"));
+			b.sendMessage(consoleColors("&e>>> " + "   &aVersion &f>> &b2.7.0"));
+			b.sendMessage(consoleColors("&e>>> " + "   &aAuthor  &f>> &bComplexCode"));
 			b.sendMessage("");
 			
+			registerCommands();
+			registerPlayers();
 			registerEvents();
 		} 
 	}
   
 	public String colors(String s) {
-		if(config.getBoolean("config.prefix.enable")) {
-			return ChatColor.translateAlternateColorCodes('&', prefix + " " + s);
+		if(getConfig().getBoolean("config.prefix.enable")) {
+			return ChatColor.translateAlternateColorCodes('&', getConfig().getString("config.prefix.prefix") + " " + s);
 		} else {
 			return ChatColor.translateAlternateColorCodes('&', s);
 		}
 	}
 	
 	public String consoleColors(String s) {
-		return ChatColor.translateAlternateColorCodes('&', name + " " + s);
+		return ChatColor.translateAlternateColorCodes('&', s);
 	}
   
 	public String messages(String s) {
-		return getLang().getString("languages." + language + "." + s);
+		return getLang().getString("languages." + getConfig().getString("config.lang") + "." + s);
 	}
   
 	public void registerCommands() {
 		getCommand("hplus").setExecutor(new Command_hplus(this));
+		getCommand("hplus").setTabCompleter(new Command_hplus_completer());
 	}
   
 	public void registerEvents() {
@@ -189,12 +193,15 @@ public class HidePlugins extends JavaPlugin {
 				latestVersion = (new BufferedReader(new InputStreamReader(con.getInputStream()))).readLine();
 				
 				if(latestVersion.length() <= 7 && !version.equals(latestVersion)) {
-					b.sendMessage(consoleColors(messages("update-messages.message-one")).replace("%newversion%", latestVersion));
-					b.sendMessage(consoleColors(messages("update-messages.message-two")).replace("%link%", "https://www.spigotmc.org/resources/25317/"));
 					b.sendMessage("");
+					b.sendMessage(consoleColors("&e>>> &cHidePlugins 2+"));
+					b.sendMessage(consoleColors("&e>>> " + messages("update-messages.line1")).replace("%newversion%", latestVersion));
+					b.sendMessage(consoleColors("&e>>> " + messages("update-messages.line2")).replace("%link%", "https://www.spigotmc.org/resources/25317/"));
 				} 
 			} catch(Exception ex) {
-				b.sendMessage(consoleColors(messages("update-messages.error-message")));
+				b.sendMessage("");
+				b.sendMessage(consoleColors("&e>>> &cHidePlugins 2+"));
+				b.sendMessage(consoleColors("&e>>> " + messages("update-messages.error")));
 			}  
 		}
 	}

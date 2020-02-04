@@ -27,9 +27,9 @@ public class CommandsBlocker implements Listener {
 		int port = p.getAddress().getPort();
 		int reports = plugin.getPlayers().getInt("players." + p.getUniqueId() + ".reports");
 		
-		if(plugin.config.getBoolean("config.protections.commands-blocker.enable")) {
-			for(String string : plugin.config.getStringList("config.blocked-commands")) {
-				if(e.getMessage().toLowerCase().startsWith("/" + string) && !p.hasPermission(plugin.config.getString("config.protections.commands-blocker.permission"))) {
+		if(plugin.getConfig().getBoolean("config.protections.commands-blocker.enable")) {
+			for(String string : plugin.getConfig().getStringList("config.blocked-commands")) {
+				if(e.getMessage().toLowerCase().startsWith("/" + string) && !p.hasPermission(plugin.getConfig().getString("config.protections.commands-blocker.permission"))) {
 					e.setCancelled(true);
 					p.sendMessage(plugin.colors(plugin.messages("no-permissions")).replace("%player%", name));
 					players.set("players." + p.getUniqueId() + ".name", name);
@@ -38,8 +38,8 @@ public class CommandsBlocker implements Listener {
 					players.set("players." + p.getUniqueId() + ".ip", ip + ":" + port);
 					plugin.savePlayers();
 					
-					if(plugin.config.getBoolean("config.sounds.enable")) {
-						List<String> lengthsound = plugin.config.getStringList("config.sounds.sounds-list");
+					if(plugin.getConfig().getBoolean("config.sounds.enable")) {
+						List<String> lengthsound = plugin.getConfig().getStringList("config.sounds.sounds-list");
 						int listsize = lengthsound.size();
 						Random aleatorio = new Random(System.currentTimeMillis());
 						int intAleatorio = aleatorio.nextInt(listsize);
@@ -50,7 +50,10 @@ public class CommandsBlocker implements Listener {
 					
 					for (Player op : Bukkit.getOnlinePlayers()) {
 						if (op.isOp()) {
-							op.sendMessage(plugin.consoleColors(plugin.messages("sounds-error"))); 
+							op.sendMessage("");
+							op.sendMessage(plugin.consoleColors("&e>>> &cHidePlugins 2+"));
+							op.sendMessage(plugin.consoleColors("&e>>> " + plugin.messages("sounds-error")));
+							op.sendMessage("");
 						}
 					}
 				} 

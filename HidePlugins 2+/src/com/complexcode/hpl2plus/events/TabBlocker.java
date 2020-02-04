@@ -14,12 +14,12 @@ public class TabBlocker implements Listener {
   
 	@EventHandler
 	public void onCommandTabSend(PlayerCommandSendEvent e) {
-		if(plugin.config.getBoolean("config.protections.tab-blocker.enable") && !e.getPlayer().hasPermission(plugin.config.getString("config.protections.tab-blocker.permission"))) {
+		if(plugin.getConfig().getBoolean("config.protections.tab-blocker.enable") && !e.getPlayer().hasPermission(plugin.getConfig().getString("config.protections.tab-blocker.permission"))) {
 			e.getCommands().clear();
 			
-			for(String listcommands : plugin.config.getStringList("config.tab-commands")) {
+			for(String listcommands : plugin.getConfig().getStringList("config.tab-commands")) {
 				e.getCommands().add(listcommands); 
 			}
-		} 
+		}
 	}
 }

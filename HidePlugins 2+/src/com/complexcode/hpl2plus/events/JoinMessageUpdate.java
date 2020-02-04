@@ -24,14 +24,19 @@ public class JoinMessageUpdate implements Listener {
 	public void playerJoin(PlayerJoinEvent event) {
 		Player p = event.getPlayer();
 		if(p.isOp()) {
-			if(plugin.config.getBoolean("config.news-broadcast")) {
+			if(plugin.getConfig().getBoolean("config.news-broadcast")) {
 				broadcast();
-				p.sendMessage(plugin.consoleColors(broadcast));
+				p.sendMessage("");
+				p.sendMessage(plugin.consoleColors("&e>>> &c&lHidePlugins 2+"));
+				p.sendMessage("&e>>> " + plugin.consoleColors(broadcast));
 			}
 			
-			if(!plugin.version.equals(plugin.latestVersion) && plugin.config.getBoolean("config.updates")) {
-				p.sendMessage(plugin.consoleColors(plugin.messages("update-messages.message-one")).replace("%newversion%", plugin.latestVersion));
-				p.sendMessage(plugin.consoleColors(plugin.messages("update-messages.message-two")).replace("%link%", "https://www.spigotmc.org/resources/25317/"));
+			if(!plugin.version.equals(plugin.latestVersion) && plugin.getConfig().getBoolean("config.updates")) {
+				p.sendMessage("");
+				p.sendMessage(plugin.consoleColors("&e>>> &c&lHidePlugins 2+"));
+				p.sendMessage(plugin.consoleColors("&e>>> " + plugin.messages("update-messages.line1")).replace("%newversion%", plugin.latestVersion));
+				p.sendMessage(plugin.consoleColors("&e>>> " + plugin.messages("update-messages.line2")).replace("%link%", "https://www.spigotmc.org/resources/25317/"));
+				p.sendMessage("");
 			} 
 		} 
 	}
