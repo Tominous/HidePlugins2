@@ -39,21 +39,23 @@ public class CommandsBlocker implements Listener {
 					plugin.savePlayers();
 					
 					if(plugin.getConfig().getBoolean("config.sounds.enable")) {
-						List<String> lengthsound = plugin.getConfig().getStringList("config.sounds.sounds-list");
-						int listsize = lengthsound.size();
-						Random aleatorio = new Random(System.currentTimeMillis());
-						int intAleatorio = aleatorio.nextInt(listsize);
-						String soundnum = lengthsound.get(intAleatorio);
-						aleatorio.setSeed(System.currentTimeMillis());
-						p.playSound(p.getLocation(), Sound.valueOf(soundnum), 10.0F, 100.0F);
-					} 
-					
-					for (Player op : Bukkit.getOnlinePlayers()) {
-						if (op.isOp()) {
-							op.sendMessage("");
-							op.sendMessage(plugin.consoleColors("&e>>> &cHidePlugins 2+"));
-							op.sendMessage(plugin.consoleColors("&e>>> " + plugin.messages("sounds-error")));
-							op.sendMessage("");
+						if(plugin.getConfig().getStringList("config.sounds.sounds-list").isEmpty() || plugin.getConfig().getStringList("config.sounds.sounds-list") == null) {
+							for(Player op : Bukkit.getOnlinePlayers()) {
+								if(op.isOp()) {
+									op.sendMessage("");
+									op.sendMessage(plugin.consoleColors("&e>>> &cHidePlugins 2+"));
+									op.sendMessage(plugin.consoleColors("&e>>> " + plugin.messages("sounds-error")));
+									op.sendMessage("");
+								}
+							}
+						} else {
+							List<String> lengthsound = plugin.getConfig().getStringList("config.sounds.sounds-list");
+							int listsize = lengthsound.size();
+							Random aleatorio = new Random(System.currentTimeMillis());
+							int intAleatorio = aleatorio.nextInt(listsize);
+							String soundnum = lengthsound.get(intAleatorio);
+							aleatorio.setSeed(System.currentTimeMillis());
+							p.playSound(p.getLocation(), Sound.valueOf(soundnum), 10.0F, 100.0F);
 						}
 					}
 				} 

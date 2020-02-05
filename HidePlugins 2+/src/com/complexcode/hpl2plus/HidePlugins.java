@@ -72,7 +72,7 @@ public class HidePlugins extends JavaPlugin {
 		    
 		    b.sendMessage("");
 			b.sendMessage(consoleColors("&e>>> " + "&aEnabled &cHidePlugins 2+&a!"));
-			b.sendMessage(consoleColors("&e>>> " + "   &aVersion &f>> &b2.7.0"));
+			b.sendMessage(consoleColors("&e>>> " + "   &aVersion &f>> &b" + version));
 			b.sendMessage(consoleColors("&e>>> " + "   &aAuthor  &f>> &bComplexCode"));
 			b.sendMessage("");
 			

@@ -86,13 +86,13 @@ public class Command_hplus implements CommandExecutor {
 						if(!(sender instanceof Player)) {
 							plugin.b.sendMessage("");
 							plugin.b.sendMessage(plugin.consoleColors("&e>>> " + "&cDisabled &aHidePlugins 2+&c!"));
-							plugin.b.sendMessage(plugin.consoleColors("&e>>> " + "   &aVersion &f>> &b2.7.0"));
+							plugin.b.sendMessage(plugin.consoleColors("&e>>> " + "   &aVersion &f>> &b" + plugin.version));
 							plugin.b.sendMessage(plugin.consoleColors("&e>>> " + "   &aAuthor  &f>> &bComplexCode"));
 						} else {
 							Player p = (Player)sender;
 							p.sendMessage("");
 							p.sendMessage(plugin.consoleColors("&e>>> " + "&cDisabled &aHidePlugins 2+&c!"));
-							p.sendMessage(plugin.consoleColors("&e>>> " + "   &aVersion &f>> &b2.7.0"));
+							p.sendMessage(plugin.consoleColors("&e>>> " + "   &aVersion &f>> &" + plugin.version));
 							p.sendMessage(plugin.consoleColors("&e>>> " + "   &aAuthor  &f>> &bComplexCode"));
 						}
 					} else if(args[0].equalsIgnoreCase("version")) {
